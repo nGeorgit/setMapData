@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="file" accept="image/*" id="imgInp">
+    <input type="button" value="Set image" id="btn">
+    <input type="text" id="textInp">
+    <input type="button" value="Save data" id="save"  onclick="exportToJsonFile()">
+    <h3 id="choice"></h3>
+    <div id="container">
+        <img src="#" id="image" class="overlap">
+        <div id="nodes" class="overlap"></div>
+    </div>
+    
+    
+    <script src="main.js"></script>
+</body>
+</html>
