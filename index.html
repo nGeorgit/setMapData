@@ -8,18 +8,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    Image: 
     <input type="file" accept="image/*" id="imgInp">
+    Load JSON: 
+    <input type="file" accept=".json" id="fileInp">
+    Set/Reset image: 
     <input type="button" value="Set image" id="btn">
+    Floor id: 
     <input type="text" id="fileId">
+    Floor name: 
     <input type="text" id="textInp">
+    Keep name & id: 
+    <input type="checkbox" id="check">
     <input type="button" value="Save data" id="save"  onclick="exportToJsonFile()">
-    <h3 id="choice"></h3>
+    <h3 id="choice">null(1)</h3>
     <div id="container">
         <img src="#" id="image" class="overlap">
         <div id="nodes" class="overlap"></div>
     </div>
     
-    
+    <script src="dij.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
