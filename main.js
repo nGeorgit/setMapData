@@ -96,6 +96,24 @@ var types = [
         "text": function(extra) {
             return extra.id
         }
+    },
+        {
+        "type": "door",
+        "color": "LimeGreen",
+        "walkable": true,
+        "change": function(e) {
+            e.style.backgroundColor = this.color
+            e.style.opacity = 0.6
+        },
+        "extra": function() {
+            return {
+                id: prompt("Entry id: "),
+                level: prompt("Entry side(1,0): ")
+            }
+        },
+        "text": function(extra) {
+            return extra.id
+        }
     }
 ]
 
@@ -115,7 +133,7 @@ var btn = document.getElementById(
         }
 
 document.addEventListener("keydown", (event) => {
-    if (event.key<=5 && event.key>=1) {
+    if (event.key<=6 && event.key>=1) {
         cur_choice = event.key - 1
         document.getElementById('choice').innerHTML = types[cur_choice].type + "(" + event.key + ")"
     }
@@ -278,6 +296,9 @@ function loadData(){
     if(loadMapData.entries[i].type == "stairs")
     {
       atype = 3
+    } else if (loadMapData.entries[i].type == "door")
+    {
+      atype = 5
     }
     types[atype].change(e);
     nodes[x][y].type = types[atype].type;
@@ -391,7 +412,7 @@ function ForemData(nodes) {
               };
               placescount++
           }
-          if (nodes[j][i].type == "elevator" || nodes[j][i].type == "stairs") {
+          if (nodes[j][i].type == "elevator" || nodes[j][i].type == "stairs" || nodes[j][i].type == "door") {
               console.log(j)
               entries[entriescount] = {
                   "code": nodes[j][i].extra.id + "_" + nodes[j][i].extra.level + "_" + floorId,
@@ -403,7 +424,6 @@ function ForemData(nodes) {
                       "x": nodes[j][i].x
                   }
               }
-              console.log("df");
               entriescount++
           }
       }
