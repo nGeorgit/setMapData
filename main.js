@@ -55,10 +55,11 @@ var types = [
         "extra": function() {
             return {
                 place: prompt("Place name:"),
+                id: Number(prompt("Entry id: "))
             }
         },
         "text": function(extra) {
-            return extra.place
+            return extra.place + " (" + extra.id + ")"
         }
     },
     {
@@ -131,6 +132,8 @@ var btn = document.getElementById(
         "btn").onclick = function() {
             setImage()
         }
+
+
 
 document.addEventListener("keydown", (event) => {
     if (event.key<=6 && event.key>=1) {
@@ -312,7 +315,7 @@ function loadData(){
 }
 
 function setImage(){
-
+  collums = document.getElementById("squareSize").value
   imageRatio = imageEl.clientHeight/image.clientWidth;
   nodeSize = imageEl.clientWidth/collums
   rows = collums*imageRatio;//y
@@ -335,6 +338,8 @@ function setImage(){
 
     resetBoard()
 }
+
+
 
 function resetBoard()
  {
@@ -405,6 +410,7 @@ function ForemData(nodes) {
           if (nodes[j][i].type == "place") {
               places[placescount] = {
                   "name": nodes[j][i].extra.place,
+                  "id": nodes[j][i].extra.id,
                   "cords": {
                       "y": nodes[j][i].y,
                       "x": nodes[j][i].x
